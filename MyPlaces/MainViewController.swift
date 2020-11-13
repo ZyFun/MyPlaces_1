@@ -29,12 +29,12 @@ class MainViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell // кастим объекты ячейки к классу
 
-        cell.textLabel?.text = restaurantNames[indexPath.row] // Заполняем таблицу
-        cell.imageView?.image = UIImage(named: restaurantNames[indexPath.row]) // Устанавливаем изображение
-        cell.imageView?.layer.cornerRadius = cell.frame.size.height / 2 // Скругляем углы у изображений. Угол радиуса должен равнятся половине высоты квадрата. Делим высоту строки на 2
-        cell.imageView?.clipsToBounds = true // Обрезаем изображение для скругления
+        cell.nameLabel.text = restaurantNames[indexPath.row] // Заполняем таблицу
+        cell.imageOfPlace.image = UIImage(named: restaurantNames[indexPath.row]) // Устанавливаем изображение
+        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2 // Скругляем углы у изображений. Угол радиуса должен равнятся половине высоты квадрата. Делим высоту строки на 2
+        cell.imageOfPlace.clipsToBounds = true // Обрезаем изображение для скругления
 
         return cell
     }
