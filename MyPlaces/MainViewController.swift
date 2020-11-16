@@ -42,7 +42,7 @@ class MainViewController: UITableViewController {
     
     //MARK: - Table view delegate
     
-    // Метод возвращает конкретную высоту строки
+//    // Метод возвращает конкретную высоту строки
 //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 85
 //    }
@@ -92,4 +92,6 @@ class MainViewController: UITableViewController {
     }
     */
 
+    // Включаем возможность выхода из открывшегося окна обратно на MainView
+    @IBAction func cancelAction(_ segue: UIStoryboardSegue) {}
 }
