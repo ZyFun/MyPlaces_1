@@ -9,8 +9,7 @@ import UIKit
 
 class MainViewController: UITableViewController {
     
-    let restaurantNames = [
-    "Farsh", "Бургер Кинг", "Макдональдc", "Якитория", "Burger Heroes"]
+    let places = Place.getPlaces() //[Place(name: "Farsh", location: "Москва", type: "Ресторан", image: "Farsh")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +24,16 @@ class MainViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurantNames.count
+        return places.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell // кастим объекты ячейки к классу
 
-        cell.nameLabel.text = restaurantNames[indexPath.row] // Заполняем таблицу
-        cell.imageOfPlace.image = UIImage(named: restaurantNames[indexPath.row]) // Устанавливаем изображение
+        cell.nameLabel.text = places[indexPath.row].name // Заполняем таблицу именами
+        cell.locationLabel.text = places[indexPath.row].location // Заполняем таблицу локациями заведений
+        cell.typeLabel.text = places[indexPath.row].type // Заполняем таблицу типами заведений
+        cell.imageOfPlace.image = UIImage(named: places[indexPath.row].image) // Заполняем таблицу изображениями заведений
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2 // Скругляем углы у изображений. Угол радиуса должен равнятся половине высоты квадрата. Делим высоту строки на 2
         cell.imageOfPlace.clipsToBounds = true // Обрезаем изображение для скругления
 
@@ -42,9 +43,9 @@ class MainViewController: UITableViewController {
     //MARK: - Table view delegate
     
     // Метод возвращает конкретную высоту строки
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 85
+//    }
 
     /*
     // Override to support conditional editing of the table view.
