@@ -9,7 +9,6 @@ import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
 
-    var newPlace = Place()
     var imageIsChanged = false
     
     @IBOutlet weak var placeImageIV: UIImageView!
@@ -20,11 +19,6 @@ class NewPlaceTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Вызываем метод сохранения базы данных создав отдельный поток для записи (многопоточность)
-        DispatchQueue.main.async {
-            self.newPlace.savePlaces()
-        }
 
         // Отключаем разлиновку TableVIew ниже имеющихся ячеек
         tableView.tableFooterView = UIView()
@@ -77,6 +71,7 @@ class NewPlaceTableViewController: UITableViewController {
     
     // Метод для созранения новых объектов
     func saveNewPlace() {
+        
         var image: UIImage?
         
         // если зображение было изменено пользователем, то присваимаем пользовательское изображение.
@@ -86,7 +81,15 @@ class NewPlaceTableViewController: UITableViewController {
             image = #imageLiteral(resourceName: "imagePlaceholder")
         }
         
-//        newPlace = Place(name: placeNameTF.text!, location: placeLocationTF.text, type: placeTypeTF.text, image: image, restaurantImage: nil)
+        // Создаём вспомагательное свойство image для конвертации в imageData
+        let imageData = image?.pngData()
+        
+        // Присваиваем все введенные свойства для подготовки к сохранению в базу данных
+        let newPlace = Place(name: placeNameTF.text!, location: placeLocationTF.text, type: placeTypeTF.text, imageData: imageData )
+        
+        //Сохраняем все введенные значения в базу данных
+        StorageManager.saveObject(newPlace)
+        
     }
     
     @IBAction func cancelAction(_ sender: Any) {
