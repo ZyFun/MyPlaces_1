@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UITableViewController {
     
-    var places = Place.getPlaces() //[Place(name: "Farsh", location: "Москва", type: "Ресторан", image: "Farsh")]
+//    var places = Place.getPlaces() //[Place(name: "Farsh", location: "Москва", type: "Ресторан", image: "Farsh")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,29 +23,31 @@ class MainViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return places.count
-    }
+//    // Метод для отображения количества ячеек
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return places.count
+//    }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell // кастим объекты ячейки к классу
-        
-        let place = places[indexPath.row]
-
-        cell.nameLabel.text = place.name // Заполняем таблицу именами
-        cell.locationLabel.text = places[indexPath.row].location // Заполняем таблицу локациями заведений
-        cell.typeLabel.text = place.type // Заполняем таблицу типами заведений
-        // Заполняем таблицу изображениями заведений учитывая тестовый функционал
-        if place.image == nil {
-            cell.imageOfPlace.image = UIImage(named: place.restaurantImage!)
-        } else {
-            cell.imageOfPlace.image = place.image
-        }
-        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2 // Скругляем углы у изображений. Угол радиуса должен равнятся половине высоты квадрата. Делим высоту строки на 2
-        cell.imageOfPlace.clipsToBounds = true // Обрезаем изображение для скругления
-
-        return cell
-    }
+//    // Метод для работы с контентом ячейки
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell // кастим объекты ячейки к классу
+//
+//        let place = places[indexPath.row]
+//
+//        cell.nameLabel.text = place.name // Заполняем таблицу именами
+//        cell.locationLabel.text = places[indexPath.row].location // Заполняем таблицу локациями заведений
+//        cell.typeLabel.text = place.type // Заполняем таблицу типами заведений
+//        // Заполняем таблицу изображениями заведений учитывая тестовый функционал
+//        if place.image == nil {
+//            cell.imageOfPlace.image = UIImage(named: place.restaurantImage!)
+//        } else {
+//            cell.imageOfPlace.image = place.image
+//        }
+//        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2 // Скругляем углы у изображений. Угол радиуса должен равнятся половине высоты квадрата. Делим высоту строки на 2
+//        cell.imageOfPlace.clipsToBounds = true // Обрезаем изображение для скругления
+//
+//        return cell
+//    }
     
     //MARK: - Table view delegate
     
@@ -107,7 +109,7 @@ class MainViewController: UITableViewController {
         // Вызываем метод сохранения данных внесенных изменений
         newPlaceVC.saveNewPlace()
         // Добавляем новые объекты в массив
-        places.append(newPlaceVC.newPlace!)
+//        places.append(newPlaceVC.newPlace!)
         // Перезагружаем окно для обновления данных
         tableView.reloadData()
     }

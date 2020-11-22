@@ -9,7 +9,7 @@ import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
 
-    var newPlace: Place?
+    var newPlace = Place()
     var imageIsChanged = false
     
     @IBOutlet weak var placeImageIV: UIImageView!
@@ -20,6 +20,11 @@ class NewPlaceTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Вызываем метод сохранения базы данных создав отдельный поток для записи (многопоточность)
+        DispatchQueue.main.async {
+            self.newPlace.savePlaces()
+        }
 
         // Отключаем разлиновку TableVIew ниже имеющихся ячеек
         tableView.tableFooterView = UIView()
@@ -81,7 +86,7 @@ class NewPlaceTableViewController: UITableViewController {
             image = #imageLiteral(resourceName: "imagePlaceholder")
         }
         
-        newPlace = Place(name: placeNameTF.text!, location: placeLocationTF.text, type: placeTypeTF.text, image: image, restaurantImage: nil)
+//        newPlace = Place(name: placeNameTF.text!, location: placeLocationTF.text, type: placeTypeTF.text, image: image, restaurantImage: nil)
     }
     
     @IBAction func cancelAction(_ sender: Any) {
