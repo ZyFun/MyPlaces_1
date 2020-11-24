@@ -133,15 +133,23 @@ class MainViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
+    // showDetail
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Подготовка перехода на другой экран
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // Подготовка информации по идентификатору сегвея
+        if segue.identifier == "showDetail" {
+            // Извлекаем значение индекса из выбранной ячейки, если оно есть
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            // Извлекаем объект по этому индексу
+            let place = places[indexPath.row]
+            // Создаём экземпляр вью контроллера на который передаём значение, выбирая контроллер назначения принудительно извлекая опционал
+            let newPlaceVC = segue.destination as! NewPlaceTableViewController
+            // Обращаемся к экземпляру контроллера и его свойству, в которое будем передавать значение и присваиваем ему извлеченный по индексу объект
+            newPlaceVC.currentPlace = place
+        }
     }
-    */
 
     // Включаем возможность выхода из открывшегося окна обратно на MainView с сохранением данных
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
@@ -149,7 +157,7 @@ class MainViewController: UITableViewController {
         guard let newPlaceVC = segue.source as? NewPlaceTableViewController else { return }
         
         // Вызываем метод сохранения данных внесенных изменений
-        newPlaceVC.saveNewPlace()
+        newPlaceVC.savePlace()
         // Перезагружаем окно для обновления данных
         tableView.reloadData()
     }
