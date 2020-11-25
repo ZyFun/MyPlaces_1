@@ -8,7 +8,9 @@
 import UIKit
 import RealmSwift
 
-class MainViewController: UITableViewController {
+class MainViewController: UIViewController, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     // Объект типа Results это аналог массива Swift
     // Results это автообновляемый тип контейнера, который возвращает запрашиваемые объекты
@@ -35,14 +37,14 @@ class MainViewController: UITableViewController {
     // MARK: - Table view data source
 
     // Метод для отображения количества ячеек
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // Предусматриваем возможный пустой массив
         return places.isEmpty ? 0:places.count
     }
 
     // Метод для работы с контентом ячейки
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell // кастим объекты ячейки к классу
 
         let place = places[indexPath.row]
@@ -80,7 +82,7 @@ class MainViewController: UITableViewController {
     
     // Создаём метод для удаления строки
     // Этим методом можно либо удалять, либо добавлять строки
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         // Настраиваем стиль
         if editingStyle == .delete {
