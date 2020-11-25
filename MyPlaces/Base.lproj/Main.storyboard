@@ -193,6 +193,9 @@
                                     <segment title="Date"/>
                                     <segment title="Name"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sortSelection:" destination="YV5-z5-5Hq" eventType="valueChanged" id="LZ1-y8-h6e"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="11i-qy-Fhr">
                                 <rect key="frame" x="0.0" y="127" width="414" height="769"/>
@@ -271,7 +274,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="aEt-CU-asX">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="Mcp-lC-jYc"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="Mcp-lC-jYc">
+                            <connections>
+                                <action selector="reversedSorting:" destination="YV5-z5-5Hq" id="ww7-LF-hoN"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ARX-RU-F07">
                             <connections>
                                 <segue destination="d1d-5i-eIp" kind="presentation" id="OPT-UV-DQ3"/>
@@ -279,12 +286,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="reversedSortingBBI" destination="Mcp-lC-jYc" id="HIK-Cl-UrG"/>
+                        <outlet property="segmentedControl" destination="P4u-2a-obt" id="Nwr-u8-Ol1"/>
                         <outlet property="tableView" destination="11i-qy-Fhr" id="FyN-Kw-Uww"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pWB-kJ-WYy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="105.79710144927537" y="60.9375"/>
+            <point key="canvasLocation" x="167" y="61"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b2I-fs-wAl">
@@ -303,7 +312,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JyT-t7-duW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-739" y="61"/>
+            <point key="canvasLocation" x="-628" y="61"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uoK-qf-gyd">

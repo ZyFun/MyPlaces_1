@@ -11,6 +11,8 @@ import RealmSwift
 class MainViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var reversedSortingBBI: UIBarButtonItem!
     
     // Объект типа Results это аналог массива Swift
     // Results это автообновляемый тип контейнера, который возвращает запрашиваемые объекты
@@ -19,6 +21,8 @@ class MainViewController: UIViewController, UITableViewDataSource {
     // Данный объект можно использовать так же как массив
     // создаём экземпляр модели
     var places: Results<Place>!
+    // Вспомогательное свойство для обратной сортировки, по умолчанию сортировка делается по возростанию
+    var ascenfingSorted = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,6 +165,40 @@ class MainViewController: UIViewController, UITableViewDataSource {
         // Вызываем метод сохранения данных внесенных изменений
         newPlaceVC.savePlace()
         // Перезагружаем окно для обновления данных
+        tableView.reloadData()
+    }
+    @IBAction func sortSelection(_ sender: UISegmentedControl) {
+        // Вызываем метод сортировки
+        sorting()
+    }
+    @IBAction func reversedSorting(_ sender: Any) {
+        // Меняем значение на противоположное
+        ascenfingSorted.toggle()
+        
+        // Меняем значение изображения (переворачиваем стрелочки)
+        if ascenfingSorted {
+            // Если значение по умолчанию, используем стрелки вниз
+            reversedSortingBBI.image = #imageLiteral(resourceName: "AZ")
+        } else {
+            // Если значение не по умолчанию, меняем значение стрелок вверх
+            reversedSortingBBI.image = #imageLiteral(resourceName: "ZA")
+        }
+        
+        sorting()
+    }
+    
+    // Метод смены способа сортировки
+    private func sorting() {
+        // Если выбран 1 сегмент (0)
+        if segmentedControl.selectedSegmentIndex == 0 {
+            // то сортируем массив по дате в порядке возрастания или убывания, в зависимости от значения ascenfingSorted
+            places = places.sorted(byKeyPath: "date", ascending: ascenfingSorted)
+        } else {
+            // иначе (выбран второй сегмент) сортируем по имени
+            places = places.sorted(byKeyPath: "name", ascending: ascenfingSorted)
+        }
+        
+        // Обновляем данные в таблице
         tableView.reloadData()
     }
 }
