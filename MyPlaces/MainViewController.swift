@@ -251,9 +251,8 @@ class MainViewController: UIViewController, UITableViewDataSource {
     }
 }
 
+// Настройка фильтрации поиска
 extension MainViewController: UISearchResultsUpdating {
-    
-    
     func updateSearchResults(for searchController: UISearchController) {
         // Вызываем метод фильтрации, и подставляем в параметр значение поисковой строки
         filterContentForSearchText(searchController.searchBar.text!)
