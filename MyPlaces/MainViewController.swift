@@ -59,8 +59,6 @@ class MainViewController: UIViewController, UITableViewDataSource {
         navigationItem.searchController = searchController
         // Отпускаем строку поиска при переходе на другой экран
         definesPresentationContext = true
-        
-        navigationController?.hidesBarsOnSwipe = true
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
