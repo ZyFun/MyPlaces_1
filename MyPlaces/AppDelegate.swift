@@ -10,6 +10,9 @@ import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    // Для запуска на iOS >13.0
+    var window: UIWindow?
 
 
 

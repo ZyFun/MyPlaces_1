@@ -187,18 +187,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P4u-2a-obt">
-                                <rect key="frame" x="0.0" y="88" width="414" height="39"/>
-                                <segments>
-                                    <segment title="Date"/>
-                                    <segment title="Name"/>
-                                </segments>
-                                <connections>
-                                    <action selector="sortSelection:" destination="YV5-z5-5Hq" eventType="valueChanged" id="LZ1-y8-h6e"/>
-                                </connections>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="11i-qy-Fhr">
-                                <rect key="frame" x="0.0" y="127" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="127" width="414" height="776"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -263,14 +253,24 @@
                                     <outlet property="delegate" destination="YV5-z5-5Hq" id="3gE-3V-QRs"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P4u-2a-obt">
+                                <rect key="frame" x="0.0" y="88" width="414" height="39"/>
+                                <segments>
+                                    <segment title="Date"/>
+                                    <segment title="Name"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sortSelection:" destination="YV5-z5-5Hq" eventType="valueChanged" id="LZ1-y8-h6e"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KAe-HY-ZBR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="11i-qy-Fhr" firstAttribute="top" secondItem="P4u-2a-obt" secondAttribute="bottom" constant="1" id="0jn-4v-dJx"/>
-                            <constraint firstItem="P4u-2a-obt" firstAttribute="leading" secondItem="KAe-HY-ZBR" secondAttribute="leading" id="F9q-gO-2dd"/>
-                            <constraint firstItem="KAe-HY-ZBR" firstAttribute="trailing" secondItem="P4u-2a-obt" secondAttribute="trailing" id="Jte-Vp-cJz"/>
-                            <constraint firstItem="P4u-2a-obt" firstAttribute="top" secondItem="KAe-HY-ZBR" secondAttribute="top" id="SX3-Qo-8MH"/>
+                            <constraint firstItem="P4u-2a-obt" firstAttribute="leading" secondItem="KAe-HY-ZBR" secondAttribute="leading" id="JAA-kr-vQE"/>
+                            <constraint firstItem="P4u-2a-obt" firstAttribute="top" secondItem="KAe-HY-ZBR" secondAttribute="top" id="Olx-Gc-PRM"/>
+                            <constraint firstItem="KAe-HY-ZBR" firstAttribute="trailing" secondItem="P4u-2a-obt" secondAttribute="trailing" id="gfo-b6-eO6"/>
+                            <constraint firstItem="11i-qy-Fhr" firstAttribute="top" secondItem="P4u-2a-obt" secondAttribute="bottom" constant="1" id="qfd-tF-atQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="aEt-CU-asX">
@@ -293,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pWB-kJ-WYy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="61"/>
+            <point key="canvasLocation" x="166.66666666666669" y="60.9375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b2I-fs-wAl">
