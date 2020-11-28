@@ -57,10 +57,6 @@ class MainViewController: UIViewController, UITableViewDataSource {
         searchController.searchBar.placeholder = "Найти"
         // Интрегрируем строку поиска в navigationBar
         navigationItem.searchController = searchController
-        // Отключаем перевод строки поиска наверх
-        navigationItem.searchController?.hidesNavigationBarDuringPresentation = false
-        // Отключаем скрытие NavigationBar при прокручивании
-        navigationItem.hidesSearchBarWhenScrolling = false
         // Отпускаем строку поиска при переходе на другой экран
         definesPresentationContext = true
 
