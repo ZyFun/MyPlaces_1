@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C07CE96255D6AD000735F5C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07CE95255D6AD000735F5C /* MainViewController.swift */; };
+		2C5673802574FCEB004777F5 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56737F2574FCEB004777F5 /* RatingControl.swift */; };
 		2C689DFB255C05C400EBC5CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C689DFA255C05C400EBC5CC /* AppDelegate.swift */; };
 		2C689DFD255C05C400EBC5CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C689DFC255C05C400EBC5CC /* SceneDelegate.swift */; };
 		2C689E02255C05C400EBC5CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C689E00255C05C400EBC5CC /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		2C07CE95255D6AD000735F5C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2C56737F2574FCEB004777F5 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		2C689DF7255C05C400EBC5CC /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C689DFA255C05C400EBC5CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C689DFC255C05C400EBC5CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				2CFCD4FE2562CCB1002E0942 /* PlaceModel.swift */,
 				2C07CE95255D6AD000735F5C /* MainViewController.swift */,
 				2CDAF622255EB2920034880F /* CustomTableViewCell.swift */,
+				2C56737F2574FCEB004777F5 /* RatingControl.swift */,
 				2CA791F52563EC1200A7649E /* NewPlaceTableViewController.swift */,
 				2C689DFC255C05C400EBC5CC /* SceneDelegate.swift */,
 				2CCCD431256A9C1700A1F56A /* StorageManager.swift */,
@@ -225,6 +228,7 @@
 				2C07CE96255D6AD000735F5C /* MainViewController.swift in Sources */,
 				2C689DFB255C05C400EBC5CC /* AppDelegate.swift in Sources */,
 				2CCCD432256A9C1700A1F56A /* StorageManager.swift in Sources */,
+				2C5673802574FCEB004777F5 /* RatingControl.swift in Sources */,
 				2CFCD4FF2562CCB1002E0942 /* PlaceModel.swift in Sources */,
 				2CDAF623255EB2920034880F /* CustomTableViewCell.swift in Sources */,
 				2C689DFD255C05C400EBC5CC /* SceneDelegate.swift in Sources */,

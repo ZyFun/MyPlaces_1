@@ -51,7 +51,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
         //Настройка searchController
         // Указываем на то, что получателем информации об изменении текста в поисковой строке должен быть наш класс
         searchController.searchResultsUpdater = self
-        //Позволяет взяимодействовать с новым вью контроллером как с основным и получать доступ к редактированию или удалению. По умолчанию это отключено.
+        // Позволяет взяимодействовать с новым вью контроллером как с основным и получать доступ к редактированию или удалению. По умолчанию это отключено.
         searchController.obscuresBackgroundDuringPresentation = false
         // Присваиваем плейсхолдер для отображения в строке поиска
         searchController.searchBar.placeholder = "Найти"
@@ -182,7 +182,6 @@ class MainViewController: UIViewController, UITableViewDataSource {
     */
 
     // MARK: - Navigation
-    // showDetail
 
     // Подготовка перехода на другой экран
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -205,6 +204,8 @@ class MainViewController: UIViewController, UITableViewDataSource {
         }
     }
 
+    // MARK: - Action
+    
     // Включаем возможность выхода из открывшегося окна обратно на MainView с сохранением данных
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         // Возвращаем данные полученные с контроллера на котором мы были ранее
@@ -250,7 +251,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
         tableView.reloadData()
     }
 }
-
+//  MARK: - SearchBar
 // Настройка фильтрации поиска
 extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {

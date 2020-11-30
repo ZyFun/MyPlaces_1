@@ -146,6 +146,23 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="140" id="b2E-oY-RbY">
+                                        <rect key="frame" x="0.0" y="503" width="414" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b2E-oY-RbY" id="6Xc-cr-pJY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ObH-4Q-GZV" customClass="RatingControl" customModule="MyPlaces" customModuleProvider="target">
+                                                    <rect key="frame" x="81" y="48" width="252" height="44"/>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ObH-4Q-GZV" firstAttribute="centerX" secondItem="6Xc-cr-pJY" secondAttribute="centerX" id="2Hz-Yh-BtL"/>
+                                                <constraint firstItem="ObH-4Q-GZV" firstAttribute="centerY" secondItem="6Xc-cr-pJY" secondAttribute="centerY" id="i55-dR-sLA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -266,7 +283,6 @@
                         <viewLayoutGuide key="safeArea" id="KAe-HY-ZBR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="11i-qy-Fhr" firstAttribute="top" secondItem="P4u-2a-obt" secondAttribute="bottom" constant="1" id="HNa-NE-QJJ"/>
                             <constraint firstItem="P4u-2a-obt" firstAttribute="leading" secondItem="KAe-HY-ZBR" secondAttribute="leading" id="JAA-kr-vQE"/>
                             <constraint firstItem="P4u-2a-obt" firstAttribute="top" secondItem="KAe-HY-ZBR" secondAttribute="top" id="Olx-Gc-PRM"/>
                             <constraint firstItem="11i-qy-Fhr" firstAttribute="leading" secondItem="KAe-HY-ZBR" secondAttribute="leading" id="cVE-ZE-2Uj"/>
