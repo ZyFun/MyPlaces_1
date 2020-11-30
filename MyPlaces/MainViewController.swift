@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class MainViewController: UIViewController, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -69,11 +69,6 @@ class MainViewController: UIViewController, UITableViewDataSource {
 
     // MARK: - Table view data source
     
-    // Отменяем выделение ячейки при возврате назад без сохранения
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     // Метод для отображения количества ячеек
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -130,6 +125,12 @@ class MainViewController: UIViewController, UITableViewDataSource {
 //        // Передаём массив с контекстными действиями
 //        return UISwipeActionsConfiguration(actions: [deleteAction])
 //    }
+    
+    // Отменяем выделение ячейки при возврате назад без сохранения
+    // TODO почему то не работает
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     // Создаём метод для удаления строки
     // Этим методом можно либо удалять, либо добавлять строки
