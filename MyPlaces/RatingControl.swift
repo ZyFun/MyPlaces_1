@@ -7,6 +7,9 @@
 
 import UIKit
 
+// Определяем рейтинг
+var rating = 0
+
 // @IBDesignable отображает созданный кодом контент в интерфейс билдере
 @IBDesignable class RatingControl: UIStackView {
 
@@ -30,8 +33,6 @@ import UIKit
         }
     }
     
-    // Определяем рейтинг
-    var rating = 0
     
     // MARK: Initialization
     override init(frame: CGRect) {

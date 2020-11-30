@@ -68,7 +68,12 @@ class MainViewController: UIViewController, UITableViewDataSource {
     }
 
     // MARK: - Table view data source
-
+    
+    // Отменяем выделение ячейки при возврате назад без сохранения
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // Метод для отображения количества ячеек
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
