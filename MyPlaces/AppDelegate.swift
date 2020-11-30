@@ -17,16 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Текущая версия базы данных
+        let schemaVersion: UInt64 = 2
         
         // Конфигурация для обновления версии схемы базы данных (для переноса старых данных в новую базу)
         let config = Realm.Configuration(
             // Версия схемы данных. Если схема данных меняется, необходимо увеличить значение на +1
-            schemaVersion: 1,
+            schemaVersion: schemaVersion,
 
             // Устанавливаем блок, который будет вызываться автоматически при открытии Realm если предыдущая версия была ниже вновь установленной
             migrationBlock: { migration, oldSchemaVersion in
                 // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if (oldSchemaVersion < 1) {
+                if (oldSchemaVersion < schemaVersion) {
                     // Nothing to do!
                     // Realm will automatically detect new properties and removed properties
                     // And will update the schema on disk automatically

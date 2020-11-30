@@ -14,9 +14,10 @@ class Place: Object {
     @objc dynamic var type: String?
     @objc dynamic var imageData: Data?
     @objc dynamic var date = Date()
+    @objc dynamic var rating = 0.0
     
     // Чтобы не приходилось прописывать все эти свойства в ручную, создадим инициализатор. Этот инициализатор не создаёт новый объект, а присваивает уже созданному объекту новые значения
-    convenience init(name: String, location: String?, type: String?, imageData: Data?) {
+    convenience init(name: String, location: String?, type: String?, imageData: Data?, rating: Double) {
         // Инициализируем свойства классов значениями по умолчанию
         self.init()
         // Присваиваем значения параметров свойствам класса
@@ -24,5 +25,6 @@ class Place: Object {
         self.location = location
         self.type = type
         self.imageData = imageData
+        self.rating = rating
     }
 }
