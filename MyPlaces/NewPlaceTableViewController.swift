@@ -22,8 +22,8 @@ class NewPlaceTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Отключаем разлиновку TableVIew ниже имеющихся ячеек
-        tableView.tableFooterView = UIView()
+        // Отключаем разлиновку TableVIew ниже имеющихся ячеек и в последней ячейке
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         
         // Делаем кнопку сохранения не активной для того, чтобы позже сдеать её активной после заполнения необходимых TF
         saveButtonBBI.isEnabled = false
