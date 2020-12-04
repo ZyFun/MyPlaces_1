@@ -77,31 +77,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // Отображаем количество элементов массива filteredPlaces
             return filteredPlaces.count
         }
-        // Предусматриваем возможный пустой массива
-        return places.isEmpty ? 0:places.count
+        return places.count
     }
 
     // Метод для работы с контентом ячейки
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell // кастим объекты ячейки к классу
-
-        // Создаём экземпляр класса, для написания логики выводимых данных
-         var place = Place()
         
         // Присваиваем значение в зависимости от активации строки поиска. Либо это будет результат поиска, либо данные из базы данных без фильтрации
-        if isFiltering {
-            place = filteredPlaces[indexPath.row]
-        } else {
-            place = places[indexPath.row]
-        }
+        let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
 
         cell.nameLabel.text = place.name // Заполняем таблицу именами
         cell.locationLabel.text = places[indexPath.row].location // Заполняем таблицу локациями заведений
         cell.typeLabel.text = place.type // Заполняем таблицу типами заведений
         cell.imageOfPlace.image = UIImage(data: place.imageData!) // Заполняем таблицу изображениями принудительно извлекая их, потому что они никогда не будут пустыми
-        
-        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2 // Скругляем углы у изображений. Угол радиуса должен равнятся половине высоты квадрата. Делим высоту строки на 2
-        cell.imageOfPlace.clipsToBounds = true // Обрезаем изображение для скругления
 
         return cell
     }
@@ -195,14 +184,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if segue.identifier == "showDetail" {
             // Извлекаем значение индекса из выбранной ячейки, если оно есть
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let place: Place
             // Извлекаем объект по этому индексу в зависимости от активированного или нет поля поиска
-            if isFiltering {
-                place = filteredPlaces[indexPath.row]
-            } else {
-                place = places[indexPath.row]
-            }
-            //let place = places[indexPath.row]
+            let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
             // Создаём экземпляр вью контроллера на который передаём значение, выбирая контроллер назначения принудительно извлекая опционал
             let newPlaceVC = segue.destination as! NewPlaceTableViewController
             // Обращаемся к экземпляру контроллера и его свойству, в которое будем передавать значение и присваиваем ему извлеченный по индексу объект
