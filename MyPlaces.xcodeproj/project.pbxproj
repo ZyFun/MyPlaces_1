@@ -14,6 +14,7 @@
 		2C689E02255C05C400EBC5CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C689E00255C05C400EBC5CC /* Main.storyboard */; };
 		2C689E04255C05C700EBC5CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C689E03255C05C700EBC5CC /* Assets.xcassets */; };
 		2C689E07255C05C700EBC5CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C689E05255C05C700EBC5CC /* LaunchScreen.storyboard */; };
+		2CA1DC13257A669C00DEB6B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1DC12257A669C00DEB6B1 /* MapViewController.swift */; };
 		2CA791F62563EC1200A7649E /* NewPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA791F52563EC1200A7649E /* NewPlaceTableViewController.swift */; };
 		2CCCD42F256A92D700A1F56A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2CCCD42E256A92D700A1F56A /* .gitignore */; };
 		2CCCD432256A9C1700A1F56A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCD431256A9C1700A1F56A /* StorageManager.swift */; };
@@ -32,6 +33,7 @@
 		2C689E03255C05C700EBC5CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C689E06255C05C700EBC5CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C689E08255C05C700EBC5CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CA1DC12257A669C00DEB6B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2CA791F52563EC1200A7649E /* NewPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceTableViewController.swift; sourceTree = "<group>"; };
 		2CCCD42E256A92D700A1F56A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2CCCD431256A9C1700A1F56A /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				2CDAF622255EB2920034880F /* CustomTableViewCell.swift */,
 				2C56737F2574FCEB004777F5 /* RatingControl.swift */,
 				2CA791F52563EC1200A7649E /* NewPlaceTableViewController.swift */,
+				2CA1DC12257A669C00DEB6B1 /* MapViewController.swift */,
 				2C689DFC255C05C400EBC5CC /* SceneDelegate.swift */,
 				2CCCD431256A9C1700A1F56A /* StorageManager.swift */,
 				2C689E00255C05C400EBC5CC /* Main.storyboard */,
@@ -228,6 +231,7 @@
 				2C07CE96255D6AD000735F5C /* MainViewController.swift in Sources */,
 				2C689DFB255C05C400EBC5CC /* AppDelegate.swift in Sources */,
 				2CCCD432256A9C1700A1F56A /* StorageManager.swift in Sources */,
+				2CA1DC13257A669C00DEB6B1 /* MapViewController.swift in Sources */,
 				2C5673802574FCEB004777F5 /* RatingControl.swift in Sources */,
 				2CFCD4FF2562CCB1002E0942 /* PlaceModel.swift in Sources */,
 				2CDAF623255EB2920034880F /* CustomTableViewCell.swift in Sources */,
