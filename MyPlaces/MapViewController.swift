@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
-    var place: Place!
+    var place = Place()
     // СОздаём идентификатор для переиспользования аннотаций одинакового типа
     let annotationID = "annotationID"
 

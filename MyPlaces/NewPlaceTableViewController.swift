@@ -78,26 +78,22 @@ class NewPlaceTableViewController: UITableViewController {
     
     // Метод для подготовки данных, переносимых на другой экран
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "showMap" {
-            return
-        }
+        if segue.identifier != "showMap" { return }
         // СОздаём экземпляр класса MapViewController
         let mapVC = segue.destination as! MapViewController
         // Передаём заведение на MapViewController
-        mapVC.place = currentPlace
+        mapVC.place.name = placeNameTF.text!
+        mapVC.place.location = placeLocationTF.text
+        mapVC.place.type = placeTypeTF.text
+        mapVC.place.imageData = placeImageIV.image?.pngData()
+        
     }
     
     // Метод для сохранения записей
     func savePlace() {
         
-        var image: UIImage?
-        
         // если зображение было изменено пользователем, то присваимаем пользовательское изображение.
-        if imageIsChanged {
-            image = placeImageIV.image
-        } else {
-            image = #imageLiteral(resourceName: "imagePlaceholder")
-        }
+        let image = imageIsChanged ? placeImageIV.image : #imageLiteral(resourceName: "imagePlaceholder")
         
         // Создаём вспомагательное свойство image для конвертации в imageData
         let imageData = image?.pngData()
