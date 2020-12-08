@@ -74,6 +74,19 @@ class NewPlaceTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Navigation
+    
+    // Метод для подготовки данных, переносимых на другой экран
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "showMap" {
+            return
+        }
+        // СОздаём экземпляр класса MapViewController
+        let mapVC = segue.destination as! MapViewController
+        // Передаём заведение на MapViewController
+        mapVC.place = currentPlace
+    }
+    
     // Метод для сохранения записей
     func savePlace() {
         

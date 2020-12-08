@@ -244,6 +244,9 @@
                             <constraint firstItem="nVM-Ml-qzj" firstAttribute="leading" secondItem="jFy-xI-2D9" secondAttribute="leading" id="nsu-Sn-8Id"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="nVM-Ml-qzj" id="D8e-p0-BeN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIy-rx-hX8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
