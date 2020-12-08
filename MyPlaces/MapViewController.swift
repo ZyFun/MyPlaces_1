@@ -10,11 +10,16 @@ import MapKit
 
 class MapViewController: UIViewController {
     var place: Place!
+    // СОздаём идентификатор для переиспользования аннотаций одинакового типа
+    let annotationID = "annotationID"
 
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Назначаем делегатом сам класс
+        mapView.delegate = self
         
         // Вызываем метод для отображения объектов на карте
         setupPlacemark()
@@ -62,5 +67,39 @@ class MapViewController: UIViewController {
             // Выделяем выбранный объект на карте
             self.mapView.selectAnnotation(annotation, animated: true)
         }
+    }
+}
+
+// Расширяем возможности работы с картами
+extension MapViewController: MKMapViewDelegate {
+    // Метод отвечает за аннотатии.
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // Отключаем отображение аннотации, если маркером является текущее положение пользователя
+        guard !(annotation is MKUserLocation) else { return nil }
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationID) as? MKPinAnnotationView // приведение нужно для отображения булавочки у метки
+        
+        // Проверяем, можем ли мы переиспользовать аннотацию, чтобы не создавать новую
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationID)
+            // Отображаем аннотатцию в виде баннера
+            annotationView?.canShowCallout = true
+        }
+        
+        //безопасно извлекаем опционал с изображением
+        if let imageData = place.imageData {
+            // Создаём новое свойство для отображения изображения на баннере пина
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) // ставим ширину и высоту по 50 поинтов, потому что высота самого баннера составляет 50 поинтов
+            // Скругляем углы
+            imageView.layer.cornerRadius = 10
+            // Обрезаем по границам
+            imageView.clipsToBounds = true
+            // Помещаем само изображение в баннер
+            imageView.image = UIImage(data: imageData)
+            // Размещаем изображение с правой стороны на баннере
+            annotationView?.rightCalloutAccessoryView = imageView
+        }
+        
+        return annotationView
     }
 }
