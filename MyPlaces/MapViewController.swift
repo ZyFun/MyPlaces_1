@@ -15,6 +15,8 @@ class MapViewController: UIViewController {
     let annotationID = "annotationID"
     // Создаём экземпляр класса, для настройки и управления геолокациями
     let locationManager = CLLocationManager()
+    // Параметр дял указания радиуса при центровки геопозиции на пользователе. Тип должен быть Double
+    let regionInMeters = 10_000.00
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -30,6 +32,16 @@ class MapViewController: UIViewController {
         // Метод для работы с геопозицией
          checkLocationServices()
     }
+    @IBAction func centerViewInUserLocation() {
+        // Проверяем координаты пользователя
+        if let location = locationManager.location?.coordinate {
+            // Если координаты получены, определяем регион для позиционирования карты с центровкой на месте положения пользователя, указывая радиус в метрах
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            // Устанавливаем регион для отображения на экране
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
     @IBAction func closeVC() {
         // Метод закроет котроллер и выгрузит его из памяти
         dismiss(animated: true)
@@ -81,8 +93,10 @@ class MapViewController: UIViewController {
             setupLocationManager()
             checkLokationAuthorization()
         } else {
-            // TODO: Поеазать алерт контроллер
-            // Инструкция, как включить эти службы
+            // Данный метод позволяет отложить запуск показа контроллера на определенное время, что позволит отоброзить его после загрузки вью
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(title: "Определение геолокации отключено", message: "Перейдите в настройки и разрешите приложению использовать геоданные: Настройки -> Концидециальность -> Службы геопозиции")
+            }
         }
     }
     
@@ -101,7 +115,10 @@ class MapViewController: UIViewController {
             mapView.showsUserLocation = true
             break
         case .denied: // Приложению отказано использовать геолокацию или когда служба геолокации отключена в настройках
-            // TODO: Поеазать алерт контроллер
+            // Данный метод позволяет отложить запуск показа контроллера на определенное время, что позволит отоброзить его после загрузки вью
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(title: "Ваша локация не определена", message: "Перейдите в настройки и разрешите приложению использовать геоданные: Настройки -> MyPlaces -> Геопозиция")
+            }
             break
         case .notDetermined: // Статус не определен. Возвращается если пользователь еще не сделал выбор, может ли приложение использовать службы геолокации
             // Запрос на использование местоположения. Появляется в момент использования приложения
@@ -115,6 +132,19 @@ class MapViewController: UIViewController {
         @unknown default:
             print("Новый неизвестный кейс")
         }
+    }
+    
+    // Создаём функцию для вызова алерт контроллера
+    private func showAlert(title: String, message: String) {
+        // Создаём алерт контроллер
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        // Конфигурируем кнопку действия
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        
+        // Добавляем в алерт контроллер кнопку
+        alert.addAction(okAction)
+        // Показываем алерт контроллер
+        present(alert, animated: true)
     }
     
 }

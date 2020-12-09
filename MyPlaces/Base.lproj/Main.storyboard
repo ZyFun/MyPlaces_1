@@ -232,16 +232,29 @@
                                     <action selector="closeVC" destination="Rh7-fW-MEd" eventType="touchUpInside" id="RZd-Ix-123"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U70-x2-zYI">
+                                <rect key="frame" x="324" y="772" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="C5Y-fC-Faz"/>
+                                    <constraint firstAttribute="width" constant="50" id="T4e-v8-Uw2"/>
+                                </constraints>
+                                <state key="normal" image="Location"/>
+                                <connections>
+                                    <action selector="centerViewInUserLocation" destination="Rh7-fW-MEd" eventType="touchUpInside" id="aN2-Yh-fM5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jFy-xI-2D9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IGg-AA-rHG" firstAttribute="top" secondItem="jFy-xI-2D9" secondAttribute="top" constant="40" id="Ubw-Dv-Cjg"/>
                             <constraint firstItem="nVM-Ml-qzj" firstAttribute="top" secondItem="vGK-ck-yse" secondAttribute="top" id="V3K-Fh-2oc"/>
+                            <constraint firstItem="jFy-xI-2D9" firstAttribute="trailing" secondItem="U70-x2-zYI" secondAttribute="trailing" constant="40" id="aZs-oi-b15"/>
                             <constraint firstItem="jFy-xI-2D9" firstAttribute="trailing" secondItem="IGg-AA-rHG" secondAttribute="trailing" constant="40" id="j2a-3c-idw"/>
                             <constraint firstAttribute="bottom" secondItem="nVM-Ml-qzj" secondAttribute="bottom" id="jBD-e9-5xU"/>
                             <constraint firstItem="nVM-Ml-qzj" firstAttribute="trailing" secondItem="jFy-xI-2D9" secondAttribute="trailing" id="mfu-Sw-e7p"/>
                             <constraint firstItem="nVM-Ml-qzj" firstAttribute="leading" secondItem="jFy-xI-2D9" secondAttribute="leading" id="nsu-Sn-8Id"/>
+                            <constraint firstItem="jFy-xI-2D9" firstAttribute="bottom" secondItem="U70-x2-zYI" secondAttribute="bottom" constant="40" id="y49-sa-w4O"/>
                         </constraints>
                     </view>
                     <connections>
@@ -418,6 +431,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="25" height="24"/>
+        <image name="Location" width="128" height="128"/>
         <image name="Photo" width="195" height="196"/>
         <image name="camcel" width="128" height="128"/>
         <image name="map" width="50" height="50"/>
