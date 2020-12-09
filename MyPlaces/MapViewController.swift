@@ -28,6 +28,8 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Присваиваем лейблу пустую строку
+        adressLabel.text = ""
         // Назначаем делегатом сам класс
         mapView.delegate = self
         // Вызываем метод для отображения объектов на карте
@@ -159,6 +161,18 @@ class MapViewController: UIViewController {
         }
     }
     
+    // Функция для определения адреса, который находится в цетре экрана
+    // Принимает параметр с mapView , и возвращает координаты
+    private func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+        // Определяем координату широты, которая соответствует центру боласти карты
+        let latitude = mapView.centerCoordinate.latitude
+        // Определяем координату долготы, которая соответствует центру боласти карты
+        let longitude = mapView.centerCoordinate.longitude
+        
+        // Возвращаем необходимые параметры
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+    
     // Создаём функцию для вызова алерт контроллера
     private func showAlert(title: String, message: String) {
         // Создаём алерт контроллер
@@ -205,6 +219,49 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         return annotationView
+    }
+    
+    // Получаем адрес в соответствии с полученными координатами с центра карты
+    // Данный метод будет обновляться каждый раз, при смене отображаемого региона в центре карты. И каждый раз будем отображать адрес.
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        // Принимаем координаты
+        let center = getCenterLocation(for: mapView)
+        // Создаём свойство для преобразования координат в название
+        let geocoder = CLGeocoder()
+        
+        // Преобразовуем координаты в название, получая массив меток, который соответствует переданным координатам
+        geocoder.reverseGeocodeLocation(center) { (placemarks, error) in
+            // Прверяем объект на наличие содержимого
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            // Если ошибок нет, извлекаем массив меток
+            guard let placemarks = placemarks else { return }
+            
+            // Извлекаем метку из массива
+            let placemark = placemarks.first
+            // Извлекаем название улицы и номер дома
+            let streetName = placemark?.thoroughfare
+            // Извлекаем номер дома
+            let buildNumber = placemark?.subThoroughfare
+            
+            // Обновлять данные необходимо в основном потоке асинхронно
+            DispatchQueue.main.async {
+                // Проверяем адрес и номер дома для извлечения опционального значения
+                if streetName != nil && buildNumber != nil {
+                    // Передаём все значения в лейбл с адресом
+                    self.adressLabel.text = "\(streetName!), \(buildNumber!)"
+                    // Передаём только значение адреса если отсутствует номер дома
+                } else if streetName != nil {
+                    self.adressLabel.text = "\(streetName!)"
+                } else {
+                    // Передаём пустую строку, если данные отсутствуют
+                    self.adressLabel.text = ""
+                }
+            }
+        }
     }
 }
 
