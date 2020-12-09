@@ -84,6 +84,8 @@ class NewPlaceTableViewController: UITableViewController {
         
         // Присваиваем свойству экземпляря класса значение ID сегвея, по которому был совершен переход
         mapVC.incomeSegueID = segueID
+        // Назначаем класс делегатом
+        mapVC.MapViewControllerDelegate = self
         
         if segueID == "showPlace" {
             // Передаём заведение на MapViewController
@@ -217,5 +219,12 @@ extension NewPlaceTableViewController: UIImagePickerControllerDelegate, UINaviga
         imageIsChanged = true
         // Закрываем контроллер
         dismiss(animated: true)
+    }
+}
+// Расширение для подписания под протокол с передачей адреса
+extension NewPlaceTableViewController: MapViewControllerDelegate {
+    // Параметр addres уже содержит в себе значение лейбла, и его нужно передать в поле с адресом
+    func getAddres(_ addres: String?) {
+        placeLocationTF.text = addres
     }
 }

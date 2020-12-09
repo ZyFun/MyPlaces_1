@@ -9,7 +9,14 @@ import UIKit
 import MapKit
 import CoreLocation // Используется для определения местоположения пользователя
 
+// Объявляем протокол для передачи данных по нажатию кнопки
+protocol MapViewControllerDelegate {
+    func getAddres(_ addres: String?)
+}
+
 class MapViewController: UIViewController {
+    // Объявляем свойство класса с типом протокола
+    var MapViewControllerDelegate: MapViewControllerDelegate?
     var place = Place()
     // СОздаём идентификатор для переиспользования аннотаций одинакового типа
     let annotationID = "annotationID"
@@ -22,14 +29,14 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapPinImage: UIImageView!
-    @IBOutlet weak var adressLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Присваиваем лейблу пустую строку
-        adressLabel.text = ""
+        addressLabel.text = ""
         // Назначаем делегатом сам класс
         mapView.delegate = self
         // Вызываем метод для отображения объектов на карте
@@ -43,6 +50,10 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed() {
+        // Передаём в параметр метода getAddres адрес из лейбла
+        MapViewControllerDelegate?.getAddres(addressLabel.text)
+        // Закрываем карту
+        dismiss(animated: true)
     }
     
     @IBAction func closeVC() {
@@ -57,7 +68,7 @@ class MapViewController: UIViewController {
             setupPlacemark()
             // Скрываем лишнее
             mapPinImage.isHidden = true
-            adressLabel.isHidden = true
+            addressLabel.isHidden = true
             doneButton.isHidden = true
         }
     }
@@ -129,7 +140,7 @@ class MapViewController: UIViewController {
         case .authorizedWhenInUse: // Разрешается отслеживание в момент использования приложения
             mapView.showsUserLocation = true
             // Центруемся на пользователе если переход был по сегвею для добавления адреса
-            if incomeSegueID == "getAdress" { showUserLocation() }
+            if incomeSegueID == "getAddress" { showUserLocation() }
             break
         case .denied: // Приложению отказано использовать геолокацию или когда служба геолокации отключена в настройках
             // Данный метод позволяет отложить запуск показа контроллера на определенное время, что позволит отоброзить его после загрузки вью
@@ -252,13 +263,13 @@ extension MapViewController: MKMapViewDelegate {
                 // Проверяем адрес и номер дома для извлечения опционального значения
                 if streetName != nil && buildNumber != nil {
                     // Передаём все значения в лейбл с адресом
-                    self.adressLabel.text = "\(streetName!), \(buildNumber!)"
+                    self.addressLabel.text = "\(streetName!), \(buildNumber!)"
                     // Передаём только значение адреса если отсутствует номер дома
                 } else if streetName != nil {
-                    self.adressLabel.text = "\(streetName!)"
+                    self.addressLabel.text = "\(streetName!)"
                 } else {
                     // Передаём пустую строку, если данные отсутствуют
-                    self.adressLabel.text = ""
+                    self.addressLabel.text = ""
                 }
             }
         }
