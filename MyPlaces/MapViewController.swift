@@ -17,34 +17,47 @@ class MapViewController: UIViewController {
     let locationManager = CLLocationManager()
     // Параметр дял указания радиуса при центровки геопозиции на пользователе. Тип должен быть Double
     let regionInMeters = 10_000.00
+    // Свойство принимающее идентификатор сегвея. Необходимо для дальнейшего выбора, по какому сегвею бьл произведен переход на карту, и какая логика должна отработать (центровка на пользователе или центровка на показе места)
+    var incomeSegueID = ""
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapPinImage: UIImageView!
+    @IBOutlet weak var adressLabel: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Назначаем делегатом сам класс
         mapView.delegate = self
-        
         // Вызываем метод для отображения объектов на карте
-        setupPlacemark()
-        
+        setupMapView()
         // Метод для работы с геопозицией
          checkLocationServices()
     }
     @IBAction func centerViewInUserLocation() {
-        // Проверяем координаты пользователя
-        if let location = locationManager.location?.coordinate {
-            // Если координаты получены, определяем регион для позиционирования карты с центровкой на месте положения пользователя, указывая радиус в метрах
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            // Устанавливаем регион для отображения на экране
-            mapView.setRegion(region, animated: true)
-        }
+        // Вызываем центровку карты на пользователе
+        showUserLocation()
+    }
+    
+    @IBAction func doneButtonPressed() {
     }
     
     @IBAction func closeVC() {
         // Метод закроет котроллер и выгрузит его из памяти
         dismiss(animated: true)
+    }
+    
+    // Метод для определения, по какому сегвею был переход пользователем
+    private func setupMapView() {
+        if incomeSegueID == "showPlace" {
+            // Ставим маркер заведения на карте
+            setupPlacemark()
+            // Скрываем лишнее
+            mapPinImage.isHidden = true
+            adressLabel.isHidden = true
+            doneButton.isHidden = true
+        }
     }
     
     // Работаем над маркером, для отображения заведения на карте
@@ -113,6 +126,8 @@ class MapViewController: UIViewController {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse: // Разрешается отслеживание в момент использования приложения
             mapView.showsUserLocation = true
+            // Центруемся на пользователе если переход был по сегвею для добавления адреса
+            if incomeSegueID == "getAdress" { showUserLocation() }
             break
         case .denied: // Приложению отказано использовать геолокацию или когда служба геолокации отключена в настройках
             // Данный метод позволяет отложить запуск показа контроллера на определенное время, что позволит отоброзить его после загрузки вью
@@ -131,6 +146,16 @@ class MapViewController: UIViewController {
             break
         @unknown default:
             print("Новый неизвестный кейс")
+        }
+    }
+    
+    private func showUserLocation() {
+        // Проверяем координаты пользователя
+        if let location = locationManager.location?.coordinate {
+            // Если координаты получены, определяем регион для позиционирования карты с центровкой на месте положения пользователя, указывая радиус в метрах
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            // Устанавливаем регион для отображения на экране
+            mapView.setRegion(region, animated: true)
         }
     }
     

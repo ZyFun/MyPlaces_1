@@ -78,14 +78,21 @@ class NewPlaceTableViewController: UITableViewController {
     
     // Метод для подготовки данных, переносимых на другой экран
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "showMap" { return }
-        // СОздаём экземпляр класса MapViewController
-        let mapVC = segue.destination as! MapViewController
-        // Передаём заведение на MapViewController
-        mapVC.place.name = placeNameTF.text!
-        mapVC.place.location = placeLocationTF.text
-        mapVC.place.type = placeTypeTF.text
-        mapVC.place.imageData = placeImageIV.image?.pngData()
+        // Создаём экземпляр класса MapViewController, если ID сегвея удалось извлеч.
+        guard let segueID = segue.identifier,
+              let mapVC = segue.destination as? MapViewController else { return }
+        
+        // Присваиваем свойству экземпляря класса значение ID сегвея, по которому был совершен переход
+        mapVC.incomeSegueID = segueID
+        
+        if segueID == "showPlace" {
+            // Передаём заведение на MapViewController
+            mapVC.place.name = placeNameTF.text!
+            mapVC.place.location = placeLocationTF.text
+            mapVC.place.type = placeTypeTF.text
+            mapVC.place.imageData = placeImageIV.image?.pngData()
+        }
+
         
     }
     
