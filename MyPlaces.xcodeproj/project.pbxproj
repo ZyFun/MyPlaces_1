@@ -15,6 +15,7 @@
 		2C689E04255C05C700EBC5CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C689E03255C05C700EBC5CC /* Assets.xcassets */; };
 		2C689E07255C05C700EBC5CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C689E05255C05C700EBC5CC /* LaunchScreen.storyboard */; };
 		2CA1DC13257A669C00DEB6B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1DC12257A669C00DEB6B1 /* MapViewController.swift */; };
+		2CA25F38258389C60036B6A9 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA25F37258389C60036B6A9 /* MapManager.swift */; };
 		2CA791F62563EC1200A7649E /* NewPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA791F52563EC1200A7649E /* NewPlaceTableViewController.swift */; };
 		2CCCD42F256A92D700A1F56A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2CCCD42E256A92D700A1F56A /* .gitignore */; };
 		2CCCD432256A9C1700A1F56A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCD431256A9C1700A1F56A /* StorageManager.swift */; };
@@ -34,6 +35,7 @@
 		2C689E06255C05C700EBC5CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C689E08255C05C700EBC5CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CA1DC12257A669C00DEB6B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2CA25F37258389C60036B6A9 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		2CA791F52563EC1200A7649E /* NewPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceTableViewController.swift; sourceTree = "<group>"; };
 		2CCCD42E256A92D700A1F56A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2CCCD431256A9C1700A1F56A /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -78,21 +80,62 @@
 		2C689DF9255C05C400EBC5CC /* MyPlaces */ = {
 			isa = PBXGroup;
 			children = (
-				2C689DFA255C05C400EBC5CC /* AppDelegate.swift */,
-				2CFCD4FE2562CCB1002E0942 /* PlaceModel.swift */,
-				2C07CE95255D6AD000735F5C /* MainViewController.swift */,
-				2CDAF622255EB2920034880F /* CustomTableViewCell.swift */,
-				2C56737F2574FCEB004777F5 /* RatingControl.swift */,
-				2CA791F52563EC1200A7649E /* NewPlaceTableViewController.swift */,
-				2CA1DC12257A669C00DEB6B1 /* MapViewController.swift */,
-				2C689DFC255C05C400EBC5CC /* SceneDelegate.swift */,
-				2CCCD431256A9C1700A1F56A /* StorageManager.swift */,
-				2C689E00255C05C400EBC5CC /* Main.storyboard */,
-				2C689E03255C05C700EBC5CC /* Assets.xcassets */,
-				2C689E05255C05C700EBC5CC /* LaunchScreen.storyboard */,
-				2C689E08255C05C700EBC5CC /* Info.plist */,
+				2CA25F3A2583A1800036B6A9 /* ViewControllers */,
+				2CA25F3C2583A1FE0036B6A9 /* Helpers */,
+				2CA25F3B2583A1E50036B6A9 /* Models */,
+				2CA25F3D2583A2290036B6A9 /* Support Files */,
+				2CA25F3E2583A2660036B6A9 /* IBuilder */,
 			);
 			path = MyPlaces;
+			sourceTree = "<group>";
+		};
+		2CA25F3A2583A1800036B6A9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C07CE95255D6AD000735F5C /* MainViewController.swift */,
+				2CA791F52563EC1200A7649E /* NewPlaceTableViewController.swift */,
+				2CA1DC12257A669C00DEB6B1 /* MapViewController.swift */,
+				2CDAF622255EB2920034880F /* CustomTableViewCell.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2CA25F3B2583A1E50036B6A9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2CFCD4FE2562CCB1002E0942 /* PlaceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2CA25F3C2583A1FE0036B6A9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2CA25F37258389C60036B6A9 /* MapManager.swift */,
+				2CCCD431256A9C1700A1F56A /* StorageManager.swift */,
+				2C56737F2574FCEB004777F5 /* RatingControl.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2CA25F3D2583A2290036B6A9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C689DFA255C05C400EBC5CC /* AppDelegate.swift */,
+				2C689DFC255C05C400EBC5CC /* SceneDelegate.swift */,
+				2C689E03255C05C700EBC5CC /* Assets.xcassets */,
+				2C689E08255C05C700EBC5CC /* Info.plist */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		2CA25F3E2583A2660036B6A9 /* IBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				2C689E00255C05C400EBC5CC /* Main.storyboard */,
+				2C689E05255C05C700EBC5CC /* LaunchScreen.storyboard */,
+			);
+			path = IBuilder;
 			sourceTree = "<group>";
 		};
 		C9EB36F75CFCF96CB9566869 /* Frameworks */ = {
@@ -233,6 +276,7 @@
 				2CCCD432256A9C1700A1F56A /* StorageManager.swift in Sources */,
 				2CA1DC13257A669C00DEB6B1 /* MapViewController.swift in Sources */,
 				2C5673802574FCEB004777F5 /* RatingControl.swift in Sources */,
+				2CA25F38258389C60036B6A9 /* MapManager.swift in Sources */,
 				2CFCD4FF2562CCB1002E0942 /* PlaceModel.swift in Sources */,
 				2CDAF623255EB2920034880F /* CustomTableViewCell.swift in Sources */,
 				2C689DFD255C05C400EBC5CC /* SceneDelegate.swift in Sources */,
@@ -385,7 +429,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B66N983M7Q;
-				INFOPLIST_FILE = MyPlaces/Info.plist;
+				INFOPLIST_FILE = "MyPlaces/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -406,7 +450,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B66N983M7Q;
-				INFOPLIST_FILE = MyPlaces/Info.plist;
+				INFOPLIST_FILE = "MyPlaces/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
